@@ -44,22 +44,27 @@ body {
   padding: 20px;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 0 20px 20px 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sidebar a {
   display: block;
-  padding: 12px;
+  padding: 20px;
   text-decoration: none;
-  color: #357ABD;
+  background-color: #004080;
+  color: white;
   font-weight: bold;
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   text-align: center;
 }
 
 .sidebar a:hover {
-  background: #4a90e2;
+  background: #003366;
   color: white;
 }
 
@@ -82,8 +87,8 @@ body {
 }
 
 .compare-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   justify-content: center;
 }
@@ -95,7 +100,7 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 280px;
-  margin: 15px;
+  margin: auto;
 }
 
 .compare-card img {
@@ -120,5 +125,5 @@ body {
 .compare-card button {
   margin-top: 15px;
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 0px;
 }
