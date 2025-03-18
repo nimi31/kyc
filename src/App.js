@@ -46,22 +46,28 @@ const ProductDetails = ({ addToCompare, comparedProducts }) => {
 
 const CompareProducts = ({ comparedProducts, removeFromCompare, addMoreProducts }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const columns = [
-    { title: "Title", dataIndex: "title", key: "title" },
-    { title: "Brand", dataIndex: "brand", key: "brand" },
-    { title: "Price ($)", dataIndex: "price", key: "price" },
-    { title: "Category", dataIndex: "category", key: "category" },
-    {
-      title: "Remove",
-      key: "remove",
-      render: (record) => <Button danger onClick={() => removeFromCompare(record.id)}>Remove</Button>,
-    },
-  ];
 
   return (
     <div className="container">
       <h2>Compare Products</h2>
-      <Table columns={columns} dataSource={comparedProducts} rowKey="id" />
+      <div className="compare-container">
+        {comparedProducts.length === 0 ? (
+          <p>No products selected for comparison.</p>
+        ) : (
+          <div className="compare-grid">
+            {comparedProducts.map((product) => (
+              <div key={product.id} className="compare-card">
+                <img src={product.thumbnail} alt={product.title} className="compare-image" />
+                <h3>{product.title}</h3>
+                <p><strong>Brand:</strong> {product.brand}</p>
+                <p><strong>Price:</strong> ${product.price}</p>
+                <p><strong>Category:</strong> {product.category}</p>
+                <Button danger onClick={() => removeFromCompare(product.id)}>Remove</Button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <Button type="primary" onClick={() => setIsModalOpen(true)}>Add More</Button>
       <Modal
         title="Add More Products"
@@ -93,7 +99,7 @@ const App = () => {
       <div className="layout">
         <nav className="navbar">
           <h1>My Store</h1>
-          <img src="https://via.placeholder.com/40" alt="User" className="profile-pic" />
+          <img src="D:\MyreactApps\kychub\public\profiel.png" alt="User" className="profile-pic" />
         </nav>
         <div className="main-content">
           <aside className="sidebar">
